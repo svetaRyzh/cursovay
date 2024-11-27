@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реки мира</title>
+    <link rel="icon" type="image/png" href="C:\Users\Svetl\Downloads\pngwing.com (1).png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<div class="sidebar-trigger">
+    <button class="trigger-button">☰</button>
+</div>
+<aside>
+    <h2>Содержание</h2>
+    <nav>
+    <ol type="1">
+        <li><button class="nav-button1" href="#nil">Нил</button></li><ul type="disc">
+            <li>Главное о Ниле</li>
+            <li>Длина и глубина</li>
+            <li>Значение реки для человека</li></ul>
+        <li><button class="nav-button2" href="#amazonka">Амазонка</button></li><ul type="disc">
+            <li>Расположение</li>
+            <li>Размеры реки</li>
+            <li>Цвет реки Амазонка</li>
+            <li>Обитетали Амазонки</li></ul>
+        <li><button class="nav-button3" href="#yanzi">Янцзы</button></li><ul type="disc">
+            <li>Общая информация</li>
+            <li>Расположение и размеры реки</li>
+            <li>Использование человеком</li>
+            <li>Обитатели реки Янцзы</li>
+        </ul>
+        <li><button class="nav-button4" href="#missisipi">Миссисипи</button></li><ul type="disc">
+            <li>Главное о Миссисипи</li>
+            <li>Особенности строения реки</li>
+            <li>Хозяйственное использование</li>
+        </ul>
+    </ol></nav>
+</aside>
+
+<body link="black">
+    <div class="head">
+        <img class="logoi" src="C:\Users\Svetl\Downloads\pngwing.com (1).png">
+        <input type="checkbox" id="burger-checkbox" class="burger-checkbox">
+      <label for="burger-checkbox" class="burger-label">
+        <span class="burger-icon"></span>
+      </label>
+
+      <div class="navi">
+        <a >Главная</a>
+        <a href="map.html">Статьи</a>
+        <a>О сайте</a>
+      </div>
+
+      <div class="menu">
+        <a>Главная</a>
+        <a>Содержание</a>
+        <a>О сайте</a>
+      </div>
+    <a class="prompt" onclick="show_registration()">Войти</a>
+    <a class="prompt" href="target.html">Корзина..?</a>
+    <div id="notification">Новые уведомления: 0</div>
+       <button id="notification-button">Остановить уведомления</button>
+       <script>
+           let notificationCount = 0;
+           let isPaused = false;
+           let notificationInterval;
+           const updateNotifications = () => {
+               if (!isPaused) {
+                   notificationCount++;
+                   document.getElementById('notification').innerText = `Новые уведомления: ${notificationCount}`;
+               }
+           };
+           const pauseNotifications = (duration) => {
+               isPaused = true;
+               setTimeout(() => {
+                   isPaused = false;
+               }, duration);
+           }
+           document.getElementById('notification-button').addEventListener('click', () => {
+               pauseNotifications(10000);
+           });
+           notificationInterval = setInterval(updateNotifications, 3000); 
+       </script>
+    <script>
+    function show_registration() {
+      let answer = prompt("Желаете пройти регистрацию на сайте?");
+      if (answer.toLowerCase() === "да") {
+        alert("Круто!");
+        document.querySelector('.overlay').style.display = 'block';
+        document.querySelector('.captcha_container_all').style.display = 'block'; 
+        generateLetterCaptcha();
+      } else {
+        alert("Попробуй ещё раз.");
+      }
+    }
+    </script>
+    </div>
+    <div class="overlay"></div>
+    <div class="registration">
+        <form>
+            <h2>Вход в панель управления</h2>
+          <label for="username">Имя пользователя:</label><br>
+          <input type="text" id="username" name="username"><br>
+          <label for="password">Пароль:</label><br>
+          <input type="password" id="password" name="password"><br><br>
+          <input type="submit" value="Войти">
+        </form>
+      </div>
+      <div class="captcha_container_all">
+        <h2>Проверка пользователя</h2>
+        <div class="captcha-container">
+            <div class="captcha" id="captcha"></div>
+            <input type="text" id="captcha-input" placeholder="Введите код">
+            <div class="error" id="error-message"></div>
+        </div>
+      </div>
+      <script src="captcha.js"></script>
+      <script src="target.js"></script>
+    <header>
+ <!-- <h2>Содержание</h2>
+    <nav>
+    <ol type="1">
+        <li><a href="#nil">Нил</a></li><ul type="disc">
+            <li>Главное о Ниле</li>
+            <li>Длина и глубина</li>
+            <li>Значение реки для человека</li></ul>
+        <li><a href="#amazonka">Амазонка</a></li><ul type="disc">
+            <li>Расположение</li>
+            <li>Размеры реки</li>
+            <li>Цвет реки Амазонка</li>
+            <li>Обитетали Амазонки</li></ul>
+        <li><a href="#yanzi">Янцзы</a></li><ul type="disc">
+            <li>Общая информация</li>
+            <li>Расположение и размеры реки</li>
+            <li>Использование человеком</li>
+            <li>Обитатели реки Янцзы</li>
+        </ul>
+        <li><a href="#missisipi">Миссисипи</a></li><ul type="disc">
+            <li>лавное о Миссисипи</li>
+            <li>собенности строения реки</li>
+            <li>Хозяйственное использоване</li>
+        </ul>
+    </ol></div></nav>-->
+</header> 
+<main>
+    <div id="intro">
+        <video autoplay muted loop>
+            <source src="C:\Users\Svetl\Desktop\Не джава\658648861282.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+          </video> 
+          <div class="intro-text">
+            <h1>Добро пожаловать на сайт о реках!</h1>
+            <p>Погружайтесь в мир водных артерий планеты.</p>
+        </div>
+    </div>
+    <article>
+    <div class="articles"> 
+        <div class="slide">
+            <div class="item" style="background-image: url(https://интересный.com/wp-content/uploads/2019/09/interesnye-fakty-o-reke-nil-1-1024x550.jpg)">
+                <div class="content">
+                   <div class="name"><h2>Нил</h2></div>
+                    <div class="des">Река Нил носит называние «голубой веной» Африки. Всего 6853 километра, по берегам - великолепные тропические леса, состоящие из кустов кофе, чёрных деревьев, банановых деревьев, бамбука. </div>
+                    <button>Читать далее...</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://kulturologia.ru/files/u29141/2914145287.jpg)">
+                <div class="content">
+                    <div class="name"><h2>Амазонка</h2></div>
+                    <div class="des">Амазонка и её притоки образуют одну из крупнейших в мире систем внутренних водных путей общей длиной более 25 тысяч км. Большая часть бассейна Амазонки принадлежит Бразилии, юго-западные и западные районы — Боливии, Перу, Эквадору и Колумбии.</div>
+                    <button>Читать далее...</button>
+                </div>
+           </div>
+           <div class="item" style="background-image: url(http://surl.li/khkmdh)">
+                <div class="content">
+                    <div class="name"><h2>Янцзы</h2></div>
+                    <div class="des">Крупнейшая река Китая, третья по длине река в мире. Занимает первое место в Китае как по длине, так и по площади водосборного бассейна и расходу воды.</div>
+                    <button>Читать далее...</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://s9.travelask.ru/system/images/files/001/457/212/wysiwyg_jpg/tnciowa_mississippiriver_4000x2200.jpg?1613426105)">
+                <div class="content">
+                    <div class="name"><h2>Миссисипи</h2></div>
+                    <div class="des">Главная река крупнейшей речной системы в Северной Америке. Протекает исключительно по территории Соединённых Штатов Америки, хотя её бассейн распространяется и на Канаду.</div>
+                    <button>Читать далее...</button>
+                </div>
+            </div>
+            <div class="item" style="background-image: url(https://avatars.mds.yandex.net/get-vertis-journal/3911415/wayne_ooone-wang-QFOJyx8zMn8-unsplash.jpg_1709553033289/1098x1098)">
+                <div class="content">
+                    <div class="name"><h2>Хуанхэ</h2></div>
+                    <div class="des">Река в Китае, одна из крупнейших по протяжённости рек Азии. Бассейн Хуанхэ считается местом формирования и становления китайского этноса наравне с Янцзы.</div>
+                    <button>Читать далее...</button>
+                </div>
+            </div>
+        </div>
+        <div class="button">
+            <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+            <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</article>
+
+
+
+    <!-- <h2>Еще реки</h2> 
+    <div class="gellery">
+        <div class="cards">
+        <img src="https://avatars.mds.yandex.net/get-vertis-journal/3911415/wayne_ooone-wang-QFOJyx8zMn8-unsplash.jpg_1709553033289/1098x1098" title="Хуанхе">
+        <div class="card-content">
+        <h3>Хуанхе</h3>
+        <p>Какое-то описание</p></div></div>
+        <div class="cards">
+        <img src="https://avatars.mds.yandex.net/get-vertis-journal/4220003/bagzhan-sadvakassov-zweoHI0u41U-unsplash.jpg_1709553177314/1098x1098" title="Обь">
+        <div class="card-content">
+        <h3>Обь</h3>
+        <p>Какое-то описание</p></div>
+        </div>
+        <div class="cards">
+        <img src="https://avatars.mds.yandex.net/get-vertis-journal/4220003/kir-shu-Q6b-gJZZ5FQ-unsplash.jpg_1709553300639/1098x1098" title="Енисей" >
+        <div class="card-content">
+        <h3>Енисей</h3>
+        <p>Какое-то описание</p></div>
+       </div>
+       <div class="cards">
+        <img src="https://avatars.dzeninfra.ru/get-zen_doc/48747/pub_6175eae6a45f62015b3f86c3_6175eb634cb7014aeb6de8e3/scale_1200" title="Тигр" >
+        <div class="card-content">
+        <h3>Тигр</h3>
+        <p>Какое-то описание</p></div>
+       </div>
+       <div class="cards">
+        <img src="https://avatars.dzeninfra.ru/get-zen_doc/1244179/pub_6175eae6a45f62015b3f86c3_6175ebb4c05f2644ae717a31/scale_1200" title="Ефрат" >
+        <div class="card-content">
+        <h3>Тигр</h3>
+        <p>Какое-то описание</p></div>
+       </div>
+       <div class="cards">
+        <img src="https://avatars.dzeninfra.ru/get-zen_doc/1718701/pub_6175eae6a45f62015b3f86c3_6175edc0f078df0898200495/scale_1200" title="Волга" >
+        <div class="card-content">
+        <h3>Волга</h3>
+        <p>Какое-то описание</p></div>
+       </div>
+    </div> -->
+    <div class="dictionary">
+        <h2>Список терминов по теме</h2>
+        <ul type="disc">
+            <li><b>Экосистема реки (первое описание)</b> - комплекс биотических (живых организмов) и абиотических (неживых) компонентов, взаимодействующих в пределах речного потока. Включает флору и фауну, которые обитают в речном окружении, а также факторы, влияющие на их жизнь.</li>
+            <li><b>Экосистема реки (второе описание)</b> - совокупность живых организмов и их среды обитания в пределах реки, взаимодействующих между собой и со средой.</li>
+            <li><b>Бассейн реки (первое описание)</b> - географическая область, где все водные потоки и осадки стекают в одну реку и её притоки. Бассейн включает в себя почвы, растения и животные, которые взаимосвязаны с гидрологическим циклом. </li>
+            <li><b>Бассейн реки (второе описание)</b> - территория, откуда стекают воды в реку, включая все её притоки и окружающие водоемы.</li>
+            <li><b>Гидрология</b> -  наука, изучающая распределение, перемещения и свойства воды на Земле, включая её в реках, озерах и атмосферном круговороте. </li>
+            <li><b>Приток</b> -  водный поток, который сливается с другой рекой, увеличивая её объем воды. Притоки могут быть как маленькими, так и крупными, играя важную роль в речной системе.  </li>
+            <li><b>Озоновый слой</b> - слой атмосферы, содержащий озон, который защищает землю от вредного солнечного излучения. Хотя не относится напрямую к рекам, его состояние может влиять на климат и экосистемы рек.</li>
+        </ul>
+        <a href="#begining"><p>Вернуться в начало страницы</p></a>
+    </div></main>
+    <footer class="footer" link="white"><address>
+        <div class="footer-container">
+        <div class="footer_about_us">
+            <h2>Про нас</h2>
+            <p>Добро пожаловать на сайт, посвященный величайшим рекам мира! Здесь вы найдете информацию о самых известных и впечатляющих водных артериях нашей планеты. От истоков до устья, мы расскажем вам о богатой истории, уникальной природе и культурном значении этих рек. Исследуйте величественные реки, познакомьтесь с их обитателями, узнайте о том, как они влияют на жизнь людей и экосистемы, и вдохновляйтесь их силой и красотой!</p>
+        </div>
+        <div class="footer_quick_links">
+            <h2>Быстрые ссылки</h2>
+            <ul>
+                <li><a href="#nil">Нил</a></li>
+                <li><a href="#amazonka">Амазонкал</a></li>
+                <li><a href="#yanzi">Янцзы</a></li>
+                <li><a href="#missisipi">Миссисипи</a></li>      
+            </ul>  
+        </div>
+    <div class="contacts"><h2 id="end">Связаться с нами: </h2>
+    <a href="tel:01234567890">Позвонить/</a>
+    <a href="mailto:sendemail@gmail.com">Написать письмо</a>
+    <div class="social-buttons">
+        <a href="#" class="btn facebook">Facebook</a>
+        <a href="#" class="btn twitter">Twitter</a>
+        <a href="#" class="btn instagram">Instagram</a>
+    </div></div></div>
+</address></footer>
+<script src="script.js"></script>
+</body>
+</html>

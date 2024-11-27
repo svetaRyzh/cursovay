@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Корзина</h1>
+    
+    <div id="cart"></div>
+    <div>
+        <button id="removeItem">Удалить элемент</button>
+        <button id="clearCart">Очистить корзину</button>
+    </div>
+    <hr>
+    <h2>Добавить товар</h2>
+    <input type="text" id="newItemName" placeholder="Название товара">
+    <input type="number" id="newItemPrice" placeholder="Цена товара">
+    <button id="addItem">Добавить товар</button>
+    <hr>
+    <h2>Настройки фильтрации и сортировки</h2>
+    <input type="number" id="filterMin" placeholder="Минимальная цена">
+    <input type="number" id="filterMax" placeholder="Максимальная цена">
+    <button id="filterItems">Применить фильтр</button>
+    <button id="sortAsc">Сортировка по возрастанию</button>
+    <button id="sortDesc">Сортировка по убыванию</button>
+    <script>
+        let cart = []; // массив с товарами
+        const cartDiv = document.getElementById('cart');
+
+        // Функция для отображения корзины
+        function displayCart() {
+            cartDiv.innerHTML = ''; 
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'item';
+                itemDiv.innerHTML = `${item.name} - ${item.price}₽ (Количество: ${item.quantity})`;
+                // Кнопка для увеличения количества товара
+                const increaseButton = document.createElement('button');
+                increaseButton.textContent = 'Увеличить количество';
+                increaseButton.onclick = () => {
+                    item.quantity++;
+                    displayCart(); // Обновляем отображение корзины
+                };
+                itemDiv.appendChild(increaseButton);
+                cartDiv.appendChild(itemDiv);
+            });
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartDiv.appendChild(document.createElement('br'));
+            cartDiv.appendChild(document.createTextNode(`Итоговая стоимость: ${totalPrice}₽`));
+        }
+
+        // Функция для добавления товара
+        document.getElementById('addItem').addEventListener('click', function() {
+            const name = document.getElementById('newItemName').value;
+            const price = parseFloat(document.getElementById('newItemPrice').value);
+            if (name && !isNaN(price)) {
+                const existingItem = cart.find(item => item.name === name);
+                if (existingItem) {
+                    existingItem.quantity++; // Увеличиваем количество если товар уже есть
+                } else {
+                    cart.push({ name, price, quantity: 1 }); // Добавляем новый товар
+                }
+                displayCart(); // Обновляем отображение корзины
+                document.getElementById('newItemName').value = '';
+                document.getElementById('newItemPrice').value = '';
+            } else {
+                alert('Пожалуйста, введите корректные данные товара.');
+            }
+        });
+
+        // Функция для удаления случайного элемента
+        document.getElementById('removeItem').addEventListener('click', function() {
+            if (cart.length > 0) {
+                const randomIndex = Math.floor(Math.random() * cart.length);
+                cart.splice(randomIndex, 1); // Удаляем элемент по случайному индексу
+                displayCart(); // Обновляем отображение корзины
+            } else {
+                alert('Корзина пуста!');
+            }
+        });
+
+        // Функция для очистки корзины
+        document.getElementById('clearCart').addEventListener('click', function() {
+            cart = []; // Очищаем массив
+            displayCart(); // Обновляем отображение корзины
+        });
+
+        // Функция для фильтрации товаров
+        document.getElementById('filterItems').addEventListener('click', function() {
+            const min = parseFloat(document.getElementById('filterMin').value);
+            const max = parseFloat(document.getElementById('filterMax').value);
+            const filteredItems = cart.filter(item => item.price >= min && item.price <= max);
+            cartDiv.innerHTML = '';
+            filteredItems.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.textContent = `${item.name} - ${item.price}₽`;
+                cartDiv.appendChild(itemDiv);
+            });
+            const totalPrice = filteredItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            cartDiv.appendChild(document.createElement('br'));
+            cartDiv.appendChild(document.createTextNode(`Итоговая стоимость отфильтрованных товаров: ${totalPrice}₽`));
+        });
+
+        // Функции для сортировки
+        document.getElementById('sortAsc').addEventListener('click', function() {
+            cart.sort((a, b) => a.price - b.price);
+            displayCart(); // Обновляем отображение корзины
+        });
+
+        document.getElementById('sortDesc').addEventListener('click', function() {
+            cart.sort((a, b) => b.price - a.price);
+            displayCart(); // Обновляем отображение корзины
+        });
+    </script>
+</body>
+</html>
